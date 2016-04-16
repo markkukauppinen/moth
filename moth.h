@@ -59,10 +59,7 @@ public:\
     virtual void run();\
     virtual std::string getId() const\
     {\
-        std::string id = #suite;\
-        id += "::";\
-        id += #test;\
-        return id;\
+        return std::string(#suite) + "::" + #test;\
     }\
 };\
 suite##test obj##suite##test;\
