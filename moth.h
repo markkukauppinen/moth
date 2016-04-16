@@ -33,6 +33,16 @@ if(a != true)\
 if(a != false)\
     TestRunner::failed(__FILE__, __LINE__);\
 
+#define CHECK_THROW(a,b)\
+try { a; }\
+catch(const b&) {}\
+catch(...) { TestRunner::failed(__FILE__, __LINE__); }\
+
+#define CHECK_NOT_THROW(a,b)\
+try { a; }\
+catch(const b&) { TestRunner::failed(__FILE__, __LINE__); }\
+catch(...) {}\
+
 class Base
 {
 public:

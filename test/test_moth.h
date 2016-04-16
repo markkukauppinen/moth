@@ -2,6 +2,7 @@
 // Copyright (c) 2016 Markku Kauppinen
 
 #include "../moth.h"
+#include <stdexcept>
 
 TEST_CASE(MOTH, CheckEqual)
 {
@@ -41,4 +42,34 @@ TEST_CASE(MOTH, CheckFalse)
 {
     bool flag = false;
     CHECK_FALSE(flag);
+}
+
+TEST_CASE(MOTH, CheckThrow)
+{
+    struct Moth
+    {
+        void execThrow()
+        {
+            const std::runtime_error error("moth_err");
+            throw error;
+        }
+    };
+
+    Moth obj;
+    CHECK_THROW(obj.execThrow(), std::runtime_error);
+}
+
+TEST_CASE(MOTH, CheckNotThrow)
+{
+    struct Moth
+    {
+        void execThrow()
+        {
+            const std::runtime_error error("moth_err");
+            throw error;
+        }
+    };
+
+    Moth obj;
+    CHECK_NOT_THROW(obj.execThrow(), std::logic_error);
 }

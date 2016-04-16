@@ -2,13 +2,13 @@
 
 MOTH is a simple and light-weight header-only c++ unit testing framework.
 
-This is an ideal unit testing framework for tiny projects where only basic
-functionality of the application logic is to be verified.
+This is an ideal unit testing framework for tiny projects where only basic functionality of the application logic is to be verified.
 
 ## What's new?
 
 |Date|Description|
 |----|-----------|
+| 2016-04-16 | Added CHECK_THROW and CHECK_NOT_THROW |
 | 2016-04-15 | First version with 6 basic CHECK routines (CHECK_EQUAL, CHECK_UNEQUAL, CHECK_NULL, CHECK_NON_NULL, CHECK_TRUE, CHECK_FALSE) |
 
 
