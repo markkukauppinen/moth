@@ -16,10 +16,13 @@ This is an ideal unit testing framework for tiny projects where only basic funct
 
 * MOTH unit testing framework is still in very early phase. So far is has has been succesfully compiled (Linux) with g++ and clang++ compilers
 * To compile the source file you can use either g++ or clang++
+
     ```
     g++ -o moth moth.cpp
     clang++ -o moth moth.cpp
     ```
+
 ## How to embed it to my c++ project?
+
 * Just create your own test suite file and include it in MOTH main source file. See examples in examples/ directory.
 
