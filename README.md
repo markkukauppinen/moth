@@ -95,7 +95,7 @@ TEST_CASE(SuiteMyClass, IsValidId)
 And finally, last thing to do is to include your test suite header file in the MOTH main source file
 
 ```
-#include "../moth.h"
+#include "moth.h"
 #include "mytestsuite.h"
 
 int main(int argc, char** argv)
@@ -184,7 +184,7 @@ private:
 And finally, last thing to do is to include your test suite header file in the MOTH main source file
 
 ```
-#include "../moth.h"
+#include "moth.h"
 #include "mytestsuite.h"
 
 int main(int argc, char** argv)
