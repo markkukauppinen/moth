@@ -113,7 +113,7 @@ private:
 
 If you wanted to verify the value of the member variable _value, you should write a test suite for it by creating a new header file, for example mytestsuite.h. In the file you should include the moth.h header file, and the header file of the class which functionality you would like to test. In this case mytest.h.
 
-TEST_CASE and all CHECK macros are defined in moth.h header file. TEST_CASE obviously creates a new test case and the content of the case are written inside curly brackets. CHECK macros take in arguments and verifies the functinality of the class under testing against those arguments.
+TEST_CASE and all CHECK macros are defined in moth.h header file. TEST_CASE obviously creates a new test case and the content of the case are written inside curly brackets. CHECK macros take in arguments and verifies the functionality of the class under testing against those arguments.
 
 ```
 #include "../../moth.h"
@@ -138,7 +138,7 @@ TEST_CASE(SuiteMyClass, Increment)
 }
 ```
 
-If you would try to compile the unit tests now, you would get a compiler error stating that _value is a private member of MyClass and cannot be accessed by the test suite. The solution get an access to the private member is to add forward declarations and friend class definition in the class which is under testing. As you can see, the class name to be used in forward declaration and in friend class definition is a concatenation of your test suite + test case (SuiteMyClass + Increment).
+If you would try to compile the unit tests now, you would get a compiler error stating that _value is a private member of MyClass and cannot be accessed by the test suite. The solution to get an access to the private member is to add a forward declaration and a friend class definition in the class which is under testing. As you can see, the class name to be used in the forward declaration and in the friend class definition is a concatenation of your test suite + test case (SuiteMyClass + Increment).
 
 ```
 class SuiteMyClassIncrement;
