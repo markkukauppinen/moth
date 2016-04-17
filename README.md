@@ -70,7 +70,7 @@ If you wanted to test the output of the member functions getString and isValid()
 TEST_CASE and all CHECK macros are defined in moth.h header file. TEST_CASE obviously creates a new test case and the content of the case are written inside curly brackets. CHECK macros take in arguments and verifies the functinality of the class under testing against those arguments.
 
 ```
-#include "../../moth.h"
+#include "moth.h"
 #include "myclass.h"
 
 TEST_CASE(SuiteMyClass, GetString)
@@ -92,6 +92,19 @@ TEST_CASE(SuiteMyClass, IsValidId)
 }
 ```
 
+And finally, last thing to do is to include your test suite header file in the MOTH main source file
+
+```
+#include "../moth.h"
+#include "mytestsuite.h"
+
+int main(int argc, char** argv)
+{
+    TestRunner::run();
+    return 0;
+}
+```
+
 ### Accessing private member variables of a class
 
 Let's start by creating a class with at least one private member variable and a modifier function for it. Let's name the header file to myclass.h.
@@ -101,14 +114,19 @@ class MyClass
 {
 public:
     // Constructor
-    MyClass();
+    MyClass() :
+        _value(0)
+    {}
 
     // Increment _value by one
-    void increment();
+    void increment()
+    {
+        ++_value;
+    }
 
 private:
     unsigned int _value;
-};
+}
 ```
 
 If you wanted to verify the value of the member variable _value, you should write a test suite for it by creating a new header file, for example mytestsuite.h. In the file you should include the moth.h header file, and the header file of the class which functionality you would like to test. In this case mytest.h.
@@ -116,7 +134,7 @@ If you wanted to verify the value of the member variable _value, you should writ
 TEST_CASE and all CHECK macros are defined in moth.h header file. TEST_CASE obviously creates a new test case and the content of the case are written inside curly brackets. CHECK macros take in arguments and verifies the functionality of the class under testing against those arguments.
 
 ```
-#include "../../moth.h"
+#include "moth.h"
 #include "myclass.h"
 
 TEST_CASE(SuiteMyClass, Increment)
@@ -147,13 +165,31 @@ class MyClass
 {
 public:
     // Constructor
-    MyClass();
+    MyClass() :
+        _value(0)
+    {}
 
     // Increment _value by one
-    void increment();
+    void increment()
+    {
+        ++_value;
+    }
 
 private:
     unsigned int _value;
     friend class SuiteMyClassIncrement;
 };
+```
+
+And finally, last thing to do is to include your test suite header file in the MOTH main source file
+
+```
+#include "../moth.h"
+#include "mytestsuite.h"
+
+int main(int argc, char** argv)
+{
+    TestRunner::run();
+    return 0;
+}
 ```
