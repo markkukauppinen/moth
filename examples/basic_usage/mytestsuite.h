@@ -7,10 +7,12 @@
 TEST_CASE(SuiteMyClass, GetString)
 {
     MyClass obj;
+    CHECK_EQUAL("", obj.getString(0));
     CHECK_EQUAL("one", obj.getString(1));
     CHECK_EQUAL("two", obj.getString(2));
     CHECK_EQUAL("three", obj.getString(3));
     CHECK_EQUAL("four",  obj.getString(4));
+    CHECK_EQUAL("", obj.getString(5));
 }
 
 TEST_CASE(SuiteMyClass, IsValidId)
